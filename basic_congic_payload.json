@@ -1,0 +1,1350 @@
+{
+    "basic": {
+        "modelName": "LanQoS",
+        "modelVersion": "2",
+        "dataLocation": "C:\\Project\\Analytics\\eion\\eion\\Data\\trainingdevicedata.csv",
+        "fileSettings": {
+            "delimiters": ",",
+            "textqualifier": "\""
+        },
+        "folderSettings": {
+            "fileType": "Local",
+            "labelDataFile": ""
+        },
+        "deployLocation": "C:\\Project\\Analytics\\Deployment\\",
+        "analysisType": {
+            "classification": "True",
+            "regression": "False",
+            "timeSeriesForecasting": "False",
+            "timeSeriesAnomalyDetection": "False",
+            "anomalyDetection": "False",
+            "recommenderSystem": "False",
+            "clustering": "False",
+            "survivalAnalysis": "False",
+            "videoForecasting": "False",
+            "topicModelling": "False",
+            "imageClassification": "False",
+            "objectDetection": "False",
+            "multiLabelPrediction": "False",
+            "multiModalLearning": "False",
+            "inputDrift": "False",
+            "outputDrift": "False",
+            "documentSimilarity": "False",
+            "textSummarization": "False"
+        },
+        "algorithms": {
+            "classification": {
+                "Logistic Regression": "False",
+                "Naive Bayes": "False",
+                "Decision Tree": "False",
+                "Random Forest": "False",
+                "Support Vector Machine": "False",
+                "K Nearest Neighbors": "False",
+                "Gradient Boosting": "False",
+                "Extreme Gradient Boosting (XGBoost)": "True",
+                "Light Gradient Boosting (LightGBM)": "False",
+                "Categorical Boosting (CatBoost)": "False",
+                "Neural Network": "False",
+                "Convolutional Neural Network (1D)": "False",
+                "Recurrent Neural Network": "False",
+                "Recurrent Neural Network (GRU)": "False",
+                "Recurrent Neural Network (LSTM)": "False",
+                "Neural Architecture Search": "False",
+                "Bagging (Ensemble)": "False",
+                "Deep Q Network": "False",
+                "Dueling Deep Q Network": "False",
+                "Online Logistic Regression": "False",
+                "Online Softmax Regression": "False",
+                "Online Decision Tree Classifier": "False",
+                "Online KNN Classifier": "False",
+                "Distributed Extreme Gradient Boosting (XGBoost)": "False",
+                "Distributed Light Gradient Boosting (LightGBM)": "False"
+            },
+            "regression": {
+                "Linear Regression": "False",
+                "Lasso": "False",
+                "Ridge": "False",
+                "Decision Tree": "False",
+                "Random Forest": "False",
+                "Extreme Gradient Boosting (XGBoost)": "True",
+                "Light Gradient Boosting (LightGBM)": "True",
+                "Categorical Boosting (CatBoost)": "False",
+                "Neural Network": "False",
+                "Convolutional Neural Network (1D)": "False",
+                "Recurrent Neural Network": "False",
+                "Recurrent Neural Network (GRU)": "False",
+                "Recurrent Neural Network (LSTM)": "False",
+                "Neural Architecture Search": "False",
+                "Bagging (Ensemble)": "False",
+                "Deep Q Network": "False",
+                "Dueling Deep Q Network": "False",
+                "Online Linear Regression": "False",
+                "Online Decision Tree Regressor": "False",
+                "Online KNN Regressor": "False",
+                "Distributed Extreme Gradient Boosting (XGBoost)": "False",
+                "Distributed Light Gradient Boosting (LightGBM)": "False"
+            },
+            "textSummarization": {
+                "Text Summarization": "False"
+            },
+            "documentSimilarity": {
+                "TF_IDF": "False",
+                "TF_IDF(SVD)": "False",
+                "Glove": "False",
+                "FastText": "False",
+                "SentenceTransformer": "False",
+                "CountVectors": "False",
+                "Word2Vec": "False",
+                "BM25": "False"
+            },
+            "timeSeriesForecasting": {
+                "ARIMA": "True",
+                "VAR": "False",
+                "FBPROPHET": "False",
+                "MLP": "False",
+                "LSTM": "False"
+            },
+            "timeSeriesAnomalyDetection": {
+                "AutoEncoder": "False",
+                "inlierClassLabel": ""
+            },
+            "recommenderSystem": {
+                "ItemRating": "False",
+                "itemRatingConfig": {
+                    "userID": "",
+                    "itemID": "",
+                    "rating": ""
+                },
+                "AssociationRules-Apriori": "True",
+                "associationRulesConfig": {
+                    "invoiceNoFeature": "",
+                    "itemFeature": ""
+                },
+                "TextSimilarity-Siamese": "False",
+                "textSimilarityConfig": {
+                    "baseFeature": "question1",
+                    "comparisonFeature": "question2"
+                }
+            },
+            "clustering": {
+                "KMeans": "False",
+                "DBSCAN": "False"
+            },
+            "anomalyDetection": {
+                "IsolationForest": "False",
+                "oneclassSVM": "False",
+                "DBScan": "False",
+                "inlierClassLabel": ""
+            },
+            "survivalAnalysis": {
+                "KaplanMeierFitter": "False",
+                "COX": "False"
+            },
+            "topicModelling": {
+                "LDA": "False"
+            },
+            "stateTransition": {
+                "MarkovClustering": "False"
+            },
+            "multiLabelPrediction": {
+                "AutoGluon": "True"
+            },
+            "multiModalLearning": {
+                "AutoGluon": "True"
+            }
+        },
+        "scoringCriteria": {
+            "documentSimilarity": {
+                "Cosine Similarity": "False",
+                "BM25 Indexing": "False",
+                "VectorDB Cosine": "False"
+            },
+            "classification": {
+                "Accuracy": "True",
+                "Recall": "False",
+                "Precision": "False",
+                "F1_Score": "False",
+                "ROC_AUC": "False"
+            },
+            "timeSeriesForecasting": {
+                "Mean Squared Error": "False",
+                "Root Mean Squared Error": "True",
+                "R-Squared": "False",
+                "Mean Absolute Error": "False"
+            },
+            "regression": {
+                "Mean Squared Error": "False",
+                "Root Mean Squared Error": "False",
+                "R-Squared": "True",
+                "Mean Absolute Error": "False"
+            },
+            "survivalAnalysis": {
+                "ConcordanceIndex": "True"
+            }
+        },
+        "analysisApproach": {
+            "timeSeriesAnomalyDetection": {
+                "AutoEncoder": {
+                    "multiVariate": "True",
+                    "uniVariate": "False"
+                }
+            }
+        },
+        "output": {
+            "profilerStage": "False",
+            "selectorStage": "False",
+            "learnerStage": "False",
+            "deploymentStage": "True"
+        },
+        "dateTimeFeature": [
+            "Date"
+        ],
+        "indexFeature": [],
+        "trainingFeatures": [
+            "Fuel_Price",
+            "Store",
+            "Unemployment",
+            "Temperature",
+            "CPI",
+            "Weekly_Sales"
+        ],
+        "targetFeature": "Holiday_Flag",
+        "noofforecasts": 24,
+        "inlierLabels": "",
+        "firstDocFeature": "sentence1",
+        "secondDocFeature": "sentence2",
+        "filterExpression": "",
+        "distributedLearning": "False",
+        "onlineLearning": "False",
+        "textSummarization": {
+            "KeyWords": "",
+            "pathForKeywordFile": ""
+        },
+        "preprocessing": {
+            "timeSeriesForecasting": {
+                "interpolation": {
+                    "linear": "True",
+                    "spline": "False",
+                    "timebased": "False"
+                },
+                "rollingWindow": "False",
+                "rollingWindowSize": "5",
+                "aggregation": {
+                    "type": {
+                        "mean": "False",
+                        "sum": "False"
+                    },
+                    "granularity": {
+                        "unit": {
+                            "second": "True",
+                            "minute": "False",
+                            "hour": "False",
+                            "day": "False",
+                            "week": "False",
+                            "month": "False",
+                            "year": "False"
+                        },
+                        "size": "10"
+                    }
+                }
+            }
+        },
+        "featureList": [
+            "Store",
+            "Date",
+            "Weekly_Sales",
+            "Holiday_Flag",
+            "Temperature",
+            "Fuel_Price",
+            "CPI",
+            "Unemployment"
+        ],
+        "noOfRecords": 6435
+    },
+    "advance": {
+        "profiler": {
+            "featureDict": [
+                {
+                    "feature": "Store",
+                    "type": "numerical",
+                    "fillMethod": "medium",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                },
+                {
+                    "feature": "Date",
+                    "type": "date",
+                    "fillMethod": "na",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                },
+                {
+                    "feature": "Weekly_Sales",
+                    "type": "numerical",
+                    "fillMethod": "medium",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                },
+                {
+                    "feature": "Holiday_Flag",
+                    "type": "numerical",
+                    "fillMethod": "medium",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                },
+                {
+                    "feature": "Temperature",
+                    "type": "numerical",
+                    "fillMethod": "medium",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                },
+                {
+                    "feature": "Fuel_Price",
+                    "type": "numerical",
+                    "fillMethod": "medium",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                },
+                {
+                    "feature": "CPI",
+                    "type": "numerical",
+                    "fillMethod": "medium",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                },
+                {
+                    "feature": "Unemployment",
+                    "type": "numerical",
+                    "fillMethod": "medium",
+                    "categoryEncoding": "na",
+                    "outlierDetection": "disable",
+                    "outlierOperation": "nochange",
+                    "normalizer": "none"
+                }
+            ],
+            "numericalFillMethod": {
+                "Median": "True",
+                "Mean": "False",
+                "KNNImputer": "False",
+                "Max": "False",
+                "Min": "False",
+                "Zero": "False",
+                "Drop": "False"
+            },
+            "categoricalFillMethod": {
+                "Mode": "True",
+                "Zero": "False",
+                "Drop": "False",
+                "MostFrequent": "False"
+            },
+            "categoryEncoding": {
+                "TargetEncoding": "True",
+                "OneHotEncoding": "False",
+                "LabelEncoding": "False"
+            },
+            "outlierDetection": {
+                "IQR": "False",
+                "ZSCORE": "False",
+                "IsolationForest": "False",
+                "oneClassSVM": "False",
+                "HalfSpaceTrees": "False"
+            },
+            "deBiasing": {
+                "FeatureName": "None",
+                "ClassName": "None",
+                "Algorithm": "",
+                "TargetFeature": ""
+            },
+            "outlierDetectionStatus": "False",
+            "outlierDetectionMethod": "None",
+            "misValueRatio": "0.8",
+            "categoricalToNumeric": "True",
+            "categoryMaxLabel": "20",
+            "numericFeatureRatio": "0.7",
+            "bucketing": "False",
+            "num_of_quantiles": "5",
+            "normalization": {
+                "standardScaler": "False",
+                "minMax": "False",
+                "logNormal": "False",
+                "maxAbsScaler": "False"
+            },
+            "removeDuplicate": "True",
+            "targetEncodingParams": {
+                "how": {
+                    "Mean": "True",
+                    "Bayesian Mean": "False"
+                }
+            },
+            "outlierDetectionParams": {
+                "Half space trees": {
+                    "n_trees": "5",
+                    "height": "3",
+                    "window_size": "2",
+                    "q": "0.99"
+                },
+                "OneClassSVM": {
+                    "nu": "0.2",
+                    "q": "0.99"
+                }
+            },
+            "textCleaning": {
+                "removeNoise": "False",
+                "removeNoiseConfig": {
+                    "decodeHTML": "True",
+                    "removeHyperLinks": "True",
+                    "removeMentions": "True",
+                    "removeHashtags": "True",
+                    "removeEmoji": "True",
+                    "unicodeToAscii": "True",
+                    "removeNonAscii": "True"
+                },
+                "expandContractions": "False",
+                "normalize": "False",
+                "normalizeMethod": {
+                    "lemmatization": "False",
+                    "stemming": "False"
+                },
+                "replaceAcronym": "False",
+                "acronymConfig": {
+                    "acronymDict": "None"
+                },
+                "correctSpelling": "False",
+                "removeStopwords": "True",
+                "stopWordsConfig": {
+                    "extend": "True",
+                    "replace": "True",
+                    "stopwordsList": []
+                },
+                "removePunctuation": "True",
+                "removePunctuationConfig": {
+                    "removePuncWithinTokens": "True"
+                },
+                "removeNumericTokens": "True",
+                "removeNumericConfig": {
+                    "removeNumeric_IncludeSpecialCharacters": "True"
+                },
+                "libConfig": {
+                    "tokenizationLib": {
+                        "nltk": "True",
+                        "textblob": "False",
+                        "spacy": "False",
+                        "keras": "False",
+                        "gensim": "False"
+                    },
+                    "lemmatizationLib": {
+                        "nltk": "True",
+                        "textblob": "False",
+                        "spacy": "False"
+                    },
+                    "stopwordsRemovalLib": {
+                        "nltk": "True",
+                        "spacy": "False",
+                        "gensim": "False"
+                    }
+                }
+            },
+            "textFeatureExtraction": {
+                "n_grams": "False",
+                "n_grams_config": {
+                    "min_n": 1,
+                    "max_n": 1
+                },
+                "pos_tags": "False",
+                "pos_tags_lib": {
+                    "nltk": "True",
+                    "textblob": "False",
+                    "spacy": "False"
+                },
+                "keywordsExtraction": "False",
+                "keywordsExtraction_config": {
+                    "ratio": 0.2,
+                    "words": "None",
+                    "scores": "False",
+                    "pos_filter": "NN,JJ",
+                    "lemmatize": "False"
+                },
+                "shallowParsing": "False",
+                "shallowParsing_lib": {
+                    "spacy": "True",
+                    "textblob": "False",
+                    "nltk": "False"
+                },
+                "namedEntityRecognition": "False"
+            },
+            "textConversionMethod": {
+                "TF_IDF": "True",
+                "TF_IDF(SVD)": "False",
+                "CountVectors": "False",
+                "Word2Vec": "False",
+                "FastText": "False",
+                "Glove": "False",
+                "SentenceTransformer": "False"
+            },
+            "embeddingSize": {
+                "Glove": {
+                    "default": "True",
+                    "50d": "False",
+                    "100d": "False",
+                    "200d": "False",
+                    "300d": "False"
+                },
+                "FastText": {
+                    "default": "True"
+                },
+                "TF_IDF(SVD)": {
+                    "default": "True",
+                    "50d": "False",
+                    "100d": "False",
+                    "200d": "False",
+                    "300d": "False"
+                },
+                "TF_IDF": {
+                    "maxFeatures": 3000
+                },
+                "CountVectors": {
+                    "maxFeatures": 3000
+                }
+            }
+        },
+        "selector": {
+            "selectionMethod": {
+                "featureSelection": "True",
+                "featureEngineering": "False"
+            },
+            "featureSelection": {
+                "allFeatures": "False",
+                "statisticalBased": "False",
+                "modelBased": "True"
+            },
+            "featureEngineering": {
+                "PCA": "False",
+                "SVD": "False",
+                "FactorAnalysis": "False",
+                "ICA": "False",
+                "numberofComponents": 0
+            },
+            "statisticalConfig": {
+                "correlationThresholdFeatures": "0.50",
+                "correlationThresholdTarget": "0.85",
+                "pValueThresholdFeatures": "0.05",
+                "pValueThresholdTarget": "0.04",
+                "varianceThreshold": "0.01"
+            },
+            "categoryMaxLabel": "20"
+        },
+        "inputdriftconf": {
+            "features": "a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19",
+            "historicaldatalocation": "C:\\Project\\Analytics\\eion\\aion\\Data\\segmenttraindata.csv"
+        },
+        "testPercentage": 20,
+        "categoryBalancingMethod": "na",
+        "mllearner_config": {
+            "modelParams": {
+                "classifierModelParams": {
+                    "Logistic Regression": {
+                        "C": "0.001,1,20",
+                        "penalty": "l1,l2",
+                        "class_weight": "balanced",
+                        "solver": "lbfgs,saga"
+                    },
+                    "Naive Bayes": {
+                        "var_smoothing": "0.000000001,0.001,100"
+                    },
+                    "Support Vector Machine": {
+                        "kernel": "linear,rbf",
+                        "C": "0.1,1,5",
+                        "probability": "True",
+                        "gamma": "0.001,10,10"
+                    },
+                    "K Nearest Neighbors": {
+                        "weights": "uniform,distance",
+                        "n_neighbors": "1,31,1",
+                        "p": "1,3"
+                    },
+                    "Decision Tree": {
+                        "max_depth": "4,33,4",
+                        "min_samples_split": "0.1,0.3,10",
+                        "min_samples_leaf": "0.01,0.05,30",
+                        "class_weight": "balanced",
+                        "max_features": "sqrt"
+                    },
+                    "Random Forest": {
+                        "max_depth": "32",
+                        "min_samples_split": "0.1,0.3,10",
+                        "min_samples_leaf": "0.01,0.05,30",
+                        "max_features": "sqrt",
+                        "class_weight": "balanced",
+                        "max_samples": "0.8,1,3"
+                    },
+                    "Gradient Boosting": {
+                        "learning_rate": "[0.01,0.05,0.1]",
+                        "n_estimators": "[50,100,200]"
+                    },
+                    "Extreme Gradient Boosting (XGBoost)": {
+                        "learning_rate": "[0.01,0.05,0.1]",
+                        "n_estimators": "[50,100,200]"
+                    },
+                    "Light Gradient Boosting (LightGBM)": {
+                        "learning_rate": "[0.01,0.05,0.1]",
+                        "n_estimators": "[50,100,200]"
+                    },
+                    "Categorical Boosting (CatBoost)": {
+                        "logging_level": "Silent",
+                        "learning_rate": "0.05,0.1,5",
+                        "max_depth": "4,7,1",
+                        "min_data_in_leaf": "20,101,20",
+                        "n_estimators": "50,151,50",
+                        "random_strength": "0.4",
+                        "allow_writing_files": "False"
+                    },
+                    "Bagging (Ensemble)": {
+                        "Logistic Regression": {
+                            "enable": "True",
+                            "param": {
+                                "max_iter": 2000
+                            }
+                        },
+                        "Naive Bayes": {
+                            "enable": "True",
+                            "param": {
+                                "var_smoothing": 1e-09
+                            }
+                        },
+                        "Support Vector Machine": {
+                            "enable": "True",
+                            "param": {
+                                "max_iter": -1
+                            }
+                        },
+                        "K Nearest Neighbors": {
+                            "enable": "True",
+                            "param": {
+                                "n_neighbors": 5
+                            }
+                        },
+                        "Decision Tree": {
+                            "enable": "True",
+                            "param": {
+                                "min_samples_leaf": 1,
+                                "min_samples_split": 2
+                            }
+                        },
+                        "Random Forest": {
+                            "enable": "True",
+                            "param": {
+                                "n_estimators": 100
+                            }
+                        }
+                    },
+                    "Stacking (Ensemble)": {
+                        "max_features_percentage": 0.5,
+                        "max_samples": 0.4,
+                        "seed": 10,
+                        "final_estimator_stack_c": "LogisticRegression",
+                        "final_estimator_stack_r": "RidgeCV"
+                    },
+                    "Voting (Ensemble)": {
+                        "voting": [
+                            "hard",
+                            "soft"
+                        ]
+                    }
+                },
+                "regressorModelParams": {
+                    "Linear Regression": {
+                        "fit_intercept": "True"
+                    },
+                    "Lasso": {
+                        "alpha": "0.01,1000,50"
+                    },
+                    "Ridge": {
+                        "alpha": "0.01,1000,50"
+                    },
+                    "Decision Tree": {
+                        "max_depth": "32",
+                        "random_state": "42",
+                        "min_samples_split": "0.1,0.3,10",
+                        "min_samples_leaf": "0.01,0.15,30",
+                        "ccp_alpha": "0.001,0.1, 10"
+                    },
+                    "Random Forest": {
+                        "n_estimators": "100",
+                        "max_depth": "32",
+                        "min_samples_split": "0.1,0.3,10",
+                        "min_samples_leaf": "0.01,0.15,10",
+                        "max_features": "0.33",
+                        "max_samples": "0.8,1,3",
+                        "random_state": "42"
+                    },
+                    "Extreme Gradient Boosting (XGBoost)": {
+                        "learning_rate": "[0.01,0.05,0.1]",
+                        "n_estimators": "[50,100,200]"
+                    },
+                    "Light Gradient Boosting (LightGBM)": {
+                        "learning_rate": "[0.01,0.05,0.1]",
+                        "n_estimators": "[50,100,200]"
+                    },
+                    "Categorical Boosting (CatBoost)": {
+                        "logging_level": "Silent",
+                        "loss_function": "RMSE,MAE",
+                        "iterations": "100,151,25",
+                        "depth": "6,10,1",
+                        "l2_leaf_reg": "logspace(-2, 2,10)",
+                        "subsample": "0.7,1,4",
+                        "random_strength": "1,20,1",
+                        "allow_writing_files": "False"
+                    },
+                    "Bagging (Ensemble)": {
+                        "Linear Regression": {
+                            "enable": "True",
+                            "param": {
+                                "fit_intercept": "True"
+                            }
+                        },
+                        "Decision Tree": {
+                            "enable": "True",
+                            "param": {
+                                "min_samples_leaf": 1,
+                                "min_samples_split": 2,
+                                "min_weight_fraction_leaf": 0.0
+                            }
+                        },
+                        "Ridge": {
+                            "enable": "True",
+                            "param": {
+                                "alpha": 1.0,
+                                "copy_X": "True",
+                                "fit_intercept": "True"
+                            }
+                        }
+                    },
+                    "Stacking (Ensemble)": {
+                        "max_features_percentage": 0.5,
+                        "max_samples": 0.4,
+                        "seed": 10,
+                        "final_estimator_stack_c": "LogisticRegression",
+                        "final_estimator_stack_r": "RidgeCV"
+                    },
+                    "Voting (Ensemble)": {
+                        "n_jobs": ""
+                    }
+                },
+                "clusteringModelParams": {
+                    "KMeans": {
+                        "n_clusters": 0
+                    },
+                    "DBSCAN": {
+                        "eps": 3,
+                        "min_samples": 2
+                    }
+                },
+                "topicModellingParams": {
+                    "LDA": {
+                        "n_topics": 6,
+                        "n_words_per_topic": 10
+                    }
+                }
+            },
+            "modelparamsfile": "",
+            "optimizationMethod": "random",
+            "optimizationHyperParameter": {
+                "iterations": 100,
+                "trainTestCVSplit": 5,
+                "geneticparams": {
+                    "n_population": 50,
+                    "crossover_proba": 0.5,
+                    "mutation_proba": 0.2,
+                    "crossover_independent_proba": 0.5,
+                    "mutation_independent_proba": 0.05,
+                    "tournament_size": 3,
+                    "n_gen_no_change": 10
+                }
+            },
+            "thresholdTunning": "NA",
+            "Stacking (Ensemble)": "False",
+            "Voting (Ensemble)": "False"
+        },
+        "distributedlearner_config": {
+            "modelParams": {
+                "classifierModelParams": {
+                    "Distributed Extreme Gradient Boosting (XGBoost)": {
+                        "tree_method": "hist",
+                        "n_estimators": "40",
+                        "max_depth": "5",
+                        "gamma": "2",
+                        "min_child_weight": "0.05",
+                        "subsample": "0.8",
+                        "colsample_bytree": "0.8",
+                        "learning_rate": "0.05",
+                        "reg_alpha": "10",
+                        "reg_lambda": "10",
+                        "random_state": "42"
+                    },
+                    "Distributed Light Gradient Boosting (LightGBM)": {
+                        "learning_rate": "0.05",
+                        "num_leaves": "15",
+                        "feature_fraction": "0.8",
+                        "bagging_fraction": "0.8",
+                        "bagging_freq": "1",
+                        "max_depth": "5",
+                        "min_data_in_leaf": "20",
+                        "n_estimators": "50"
+                    }
+                },
+                "regressorModelParams": {
+                    "Distributed Extreme Gradient Boosting (XGBoost)": {
+                        "tree_method": "hist",
+                        "n_estimators": "40",
+                        "max_depth": "5",
+                        "gamma": "2",
+                        "min_child_weight": "0.15",
+                        "subsample": "0.8",
+                        "colsample_bytree": "0.8",
+                        "learning_rate": "0.05",
+                        "reg_alpha": "10",
+                        "reg_lambda": "10",
+                        "random_state": "42"
+                    },
+                    "Distributed Light Gradient Boosting (LightGBM)": {
+                        "num_leaves": "16",
+                        "max_depth": "5",
+                        "n_estimators": "25",
+                        "min_child_sa2023-09-01T08:31:08.159629575Z mples": "25",
+                        "learning_rate": "0.1",
+                        "reg_alpha": "10",
+                        "reg_lambda": "10",
+                        "subsample": "1",
+                        "colsample_bytree": "1"
+                    }
+                }
+            },
+            "cluster_type": "local",
+            "n_workers": 1,
+            "npartitions": 1000,
+            "threads_per_worker": 8
+        },
+        "onlinelearner_config": {
+            "modelParams": {
+                "classifierModelParams": {
+                    "Online Logistic Regression": {
+                        "l2": "0.2",
+                        "optimizer": "SGD",
+                        "optimizer_lr": "0.01",
+                        "intercept_init": "0",
+                        "intercept_lr": "0.01"
+                    },
+                    "Online Decision Tree Classifier": {
+                        "grace_period": "200",
+                        "max_depth": "None",
+                        "min_samples_reevaluate": "20",
+                        "split_criterion": "info_gain",
+                        "leaf_prediction": "nba"
+                    },
+                    "Online Softmax Regression": {
+                        "optimizer": "SGD",
+                        "optimizer_lr": "0.01",
+                        "l2": "0.2"
+                    },
+                    "Online KNN Classifier": {
+                        "n_neighbors": "5",
+                        "window_size": "500",
+                        "min_distance_keep": "0.05",
+                        "weighted": "True",
+                        "cleanup_every": "0",
+                        "softmax": "True"
+                    }
+                },
+                "regressorModelParams": {
+                    "Online Linear Regression": {
+                        "l2": "0.2",
+                        "optimizer": "SGD",
+                        "optimizer_lr": "0.01",
+                        "intercept_init": "0",
+                        "intercept_lr": "0.01"
+                    },
+                    "Online Decision Tree Regressor": {
+                        "grace_period": "200",
+                        "max_depth": "None",
+                        "delta": "1e-07",
+                        "leaf_prediction": "adaptive",
+                        "min_samples_split": "5",
+                        "bootstrap_sampling": "True",
+                        "drift_window_threshold": "300",
+                        "seed": "42"
+                    },
+                    "Online KNN Regressor": {
+                        "n_neighbors": "5",
+                        "window_size": "500",
+                        "aggregation_method": "mean",
+                        "min_distance_keep": "0.0"
+                    }
+                }
+            }
+        },
+        "rllearner_config": {
+            "modelParams": {
+                "classifierModelParams": {
+                    "Deep Q Network": {
+                        "episodes": 150000,
+                        "warmup_steps": 170000,
+                        "batch_size": 32,
+                        "collect_steps_per_episode": 2500,
+                        "collect_every": 500,
+                        "target_update_period": 800,
+                        "target_update_tau": 1,
+                        "n_step_update": 1,
+                        "learning_rate": 0.0025,
+                        "gamma": 0,
+                        "min_epsilon": 0.5
+                    },
+                    "Dueling Deep Q Network": {
+                        "episodes": 150000,
+                        "warmup_steps": 170000,
+                        "batch_size": 32,
+                        "collect_steps_per_episode": 2500,
+                        "collect_every": 500,
+                        "target_update_period": 800,
+                        "target_update_tau": 1,
+                        "n_step_update": 1,
+                        "learning_rate": 0.0025,
+                        "gamma": 0,
+                        "min_epsilon": 0.5
+                    }
+                },
+                "regressorModelParams": {
+                    "Deep Q Network": {
+                        "episodes": 150000,
+                        "warmup_steps": 170000,
+                        "batch_size": 32,
+                        "collect_steps_per_episode": 2500,
+                        "collect_every": 500,
+                        "target_update_period": 800,
+                        "target_update_tau": 1,
+                        "n_step_update": 1,
+                        "learning_rate": 0.0025,
+                        "gamma": 0,
+                        "min_epsilon": 0.5
+                    },
+                    "Dueling Deep Q Network": {
+                        "episodes": 150000,
+                        "warmup_steps": 170000,
+                        "batch_size": 32,
+                        "collect_steps_per_episode": 2500,
+                        "collect_every": 500,
+                        "target_update_period": 800,
+                        "target_update_tau": 1,
+                        "n_step_update": 1,
+                        "learning_rate": 0.0025,
+                        "gamma": 0,
+                        "min_epsilon": 0.5
+                    }
+                }
+            }
+        },
+        "objectDetection": {
+            "n_epoch": 14,
+            "batch_size": 4,
+            "pretrainedModel": "efficientdet_d1_coco17_tpu-32"
+        },
+        "anomalyDetection": {
+            "modelParams": {
+                "IsolationForest": {
+                    "n_estimators": "100,500,50",
+                    "max_samples": "100,500,50",
+                    "contamination": "0.1,0.5,5",
+                    "bootstrap": "True,False",
+                    "n_jobs": "5,20,5"
+                },
+                "oneclassSVM": {
+                    "kernel": "linear,poly,rbf,sigmoid",
+                    "degree": "2,3",
+                    "gamma": "scale,auto",
+                    "nu": "0.01,0.99,30",
+                    "shrinking": "True,False"
+                },
+                "DBScan": {
+                    "eps": [
+                        0.3,
+                        0.4,
+                        0.5,
+                        0.6
+                    ],
+                    "min_samples": [
+                        2,
+                        5,
+                        10,
+                        15,
+                        20,
+                        30
+                    ]
+                }
+            }
+        },
+        "timeSeriesForecasting": {
+            "fix_seasonality": "False",
+            "fix_stationarity": "False",
+            "modelParams": {
+                "ARIMA": {
+                    "start_p": 1,
+                    "start_q": 1,
+                    "max_p": 2,
+                    "max_q": 2,
+                    "max_d": 2,
+                    "m": 12,
+                    "start_P": 0,
+                    "start_Q": 0,
+                    "max_P": 2,
+                    "max_D": 2,
+                    "max_Q": 2,
+                    "max_order": 1,
+                    "seasonal": "True",
+                    "d": 1,
+                    "D": 1,
+                    "trace": "True",
+                    "error_action": "ignore",
+                    "suppress_warnings": "True",
+                    "stepwise": "True"
+                },
+                "FBPROPHET": {
+                    "seasonality_mode": "multiplicative,additive",
+                    "changepoint_prior_scale": "0.05",
+                    "changepoint_range": "0.1",
+                    "yearly_seasonality": "True",
+                    "weekly_seasonality": "auto",
+                    "daily_seasonality": "auto",
+                    "mcmc_samples": "0",
+                    "interval_width": "0.25",
+                    "holidays_prior_scale": "1",
+                    "n_changepoints": "10",
+                    "uncertainty_samples": "0",
+                    "seasonality_prior_scale": "10",
+                    "additional_regressors": "",
+                    "holiday_country_name": "US",
+                    "holiday_years": "2018,2019,2020",
+                    "no_of_periods": "100",
+                    "pred_frequncy": ""
+                },
+                "LSTM": {
+                    "tuner_help_info": "User can select any one of the following keras tuner algorithms: 1.RandomSearch,2.BayesianOptimization and 3.Hyperband",
+                    "tuner_algorithm": "Randomsearch",
+                    "activation": "relu",
+                    "optimizer": "Adam",
+                    "loss": "mean_squared_error",
+                    "first_layer_helptext": "Provide values min and max such as 8,512 (Available values:8,16,32,64,128,256,512). Default step size is 16.",
+                    "first_layer": "8,256",
+                    "lag_order_helptext": "Provide values for time steps (lag_order).Default step size is 2.",
+                    "lag_order": "2",
+                    "hidden_layers": "2",
+                    "dropout_helptext": "Provide values min and max such as 0,0.5. Default step size is 0.1",
+                    "dropout": "0.0,0.5",
+                    "batch_size": "32",
+                    "epochs": "50",
+                    "model_name": "lstm_model.h5"
+                },
+                "MLP": {
+                    "tuner_help_info": "User can select any one of the following keras tuner algorithms: 1.RandomSearch,2.BayesianOptimization and 3.Hyperband",
+                    "tuner_algorithm": "Randomsearch",
+                    "activation": "relu",
+                    "optimizer": "Adam",
+                    "loss": "mean_squared_error",
+                    "first_layer_helptext": "Provide values min and max such as 8,512 (8,16,32,64,128,256,512). Default step size is 16.",
+                    "first_layer": "8,256",
+                    "lag_order_helptext": "Provide values time steps (lag_order).Default step size is 2.",
+                    "lag_order": "2",
+                    "hidden_layers": "2",
+                    "dropout_helptext": "Provide values min and max such as 0,0.5. Default step size is 0.1",
+                    "dropout": "0.0,0.5",
+                    "batch_size": "32",
+                    "epochs": "50",
+                    "model_name": "mlp_model.h5"
+                }
+            },
+            "modelparamsfile": ""
+        },
+        "timeSeriesAnomalyDetection": {
+            "modelParams": {
+                "AutoEncoder": {
+                    "hidden_layers": "2",
+                    "hidden_units": "32",
+                    "optimizer": "adam",
+                    "batch_size": "512",
+                    "dropout": "0.25",
+                    "loss": "mae",
+                    "activation": "relu",
+                    "learning_rate": "0.001",
+                    "epochs": "50",
+                    "timeseries_layers": "dense",
+                    "time_steps": "30",
+                    "latentspace_size": "16"
+                },
+                "DBScan": {
+                    "eps": [
+                        0.3,
+                        0.4,
+                        0.5,
+                        0.6
+                    ],
+                    "min_samples": [
+                        2,
+                        5,
+                        10,
+                        15,
+                        20,
+                        30
+                    ]
+                }
+            },
+            "modelparamsfile": ""
+        },
+        "associationrule": {
+            "modelParams": {
+                "apriori": {
+                    "minSupport": 0.2,
+                    "metric": "lift",
+                    "minThreshold": 0.4
+                }
+            },
+            "modelparamsfile": ""
+        },
+        "dllearner_config": {
+            "modelParams": {
+                "classifierModelParams": {
+                    "Neural Network": {
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "categorical_crossentropy",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "2",
+                        "dropout": "0.0",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "last_activation": "softmax",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Recurrent Neural Network": {
+                        "numRNNLayers": "1",
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "categorical_crossentropy",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "8",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "last_activation": "softmax",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Recurrent Neural Network (GRU)": {
+                        "numRNNLayers": "1",
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "categorical_crossentropy",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "8",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "last_activation": "softmax",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Recurrent Neural Network (LSTM)": {
+                        "numRNNLayers": "1",
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "categorical_crossentropy",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "8",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "last_activation": "softmax",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Convolutional Neural Network (1D)": {
+                        "activation": "leaky_relu",
+                        "numConvLayers": "2",
+                        "MaxPool": "True",
+                        "optimizer": "Adam",
+                        "losses": "categorical_crossentropy",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "8",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "last_activation": "softmax",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Neural Architecture Search": {
+                        "n_models": 5,
+                        "n_epochs": 100,
+                        "optimizer": "adam",
+                        "metrics": "",
+                        "tuner": "greedy",
+                        "seed": 1
+                    },
+                    "GoogleModelSearch_DNN": {
+                        "n_models": 5,
+                        "train_steps": 10,
+                        "n_eval": 10,
+                        "batch_size": 32,
+                        "logits_dimension": 2,
+                        "root_dir_name": "modelsearch_rootdir",
+                        "experiment_name": "test"
+                    }
+                },
+                "regressorModelParams": {
+                    "Neural Network": {
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "mean_absolute_error,mean_squared_error",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "2",
+                        "dropout": "0.0",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Recurrent Neural Network": {
+                        "numRNNLayers": "1",
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "mean_absolute_error,mean_squared_error",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "8",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Recurrent Neural Network (GRU)": {
+                        "numRNNLayers": "1",
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "mean_absolute_error,mean_squared_error",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "8",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Recurrent Neural Network (LSTM)": {
+                        "numRNNLayers": "1",
+                        "activation": "leaky_relu",
+                        "optimizer": "Adam",
+                        "losses": "mean_absolute_error,mean_squared_error",
+                        "first_layer": "16",
+                        "shapes": "brick",
+                        "hidden_layers": "8",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Convolutional Neural Network (1D)": {
+                        "kernel_size": "3",
+                        "activation": "leaky_relu",
+                        "numConvLayers": "2",
+                        "MaxPool": "True",
+                        "optimizer": "Adam",
+                        "losses": "mean_absolute_error,mean_squared_error",
+                        "first_layer": "16",
+                        "shapes": "funnel",
+                        "hidden_layers": "2",
+                        "dropout": "0.2",
+                        "batch_size": "64,128,256",
+                        "epochs": "50",
+                        "learning_rate": "0.001 , 0.0255, 0.05"
+                    },
+                    "Neural Architecture Search": {
+                        "n_models": 5,
+                        "n_epochs": 100,
+                        "optimizer": "adam",
+                        "metrics": "",
+                        "tuner": "greedy",
+                        "seed": 1
+                    }
+                }
+            },
+            "modelparamsfile": "",
+            "optimizationMethod": "Quantum",
+            "optimizationHyperParameter": {
+                "roundLimit": 10,
+                "trainTestCVSplit": 10
+            }
+        },
+        "recommenderparam": {
+            "svd_params": {
+                "n_factors": "50,100,150",
+                "n_epochs": "20,30",
+                "lr_all": "0.005,0.01",
+                "reg_all": "0.02,0.1"
+            }
+        },
+        "textSimilarityConfig": {
+            "num_epochs": 5,
+            "activation": "relu",
+            "batch_size": 64,
+            "testPercentage": 20,
+            "similarityIndex": 0.4
+        },
+        "modelEvaluation": {
+            "smcStrategy": "tree",
+            "smcMaxDepth": 5,
+            "smcCondition": 0.9,
+            "miCondition": 1e-05
+        },
+        "visualization_settings": {
+            "visulization_tool": "kibana",
+            "datasetid": "c008dc50-6432-11ea-90da-a99d0a73393a"
+        },
+        "outputdriftconf": {
+            "actualFeature": "actual",
+            "predictedFeature": "predict",
+            "predictionType": "Regression"
+        },
+        "remoteTraining": {
+            "computeInfrastructure": "True",
+            "AmazonEC2Settings": {
+                "awsAccessKeyId": "",
+                "awsSecretAccessKey": "",
+                "regionName": "ap-south-1",
+                "amiId": "ami-0ffc16774d784da6d",
+                "noOfInstance": "1"
+            }
+        },
+        "deployer": {
+            "method": "test_package",
+            "prediction_type": "class",
+            "image_uplaod": "False",
+            "edge_deployment": "False",
+            "edge_format": {
+                "onnx": "False"
+            }
+        }
+    }
+}
