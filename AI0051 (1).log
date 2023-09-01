@@ -1,0 +1,416 @@
+************* Version - v2.7.1.1 *************** 
+
+-------> Execution Start Time: 2023-09-01 14:01:11 IST
+Status:-|... AION Training Configuration started
+Status:-|... AION Loading Data
+
+---------- Prepare Features ----------
+-------> Model Features: Store,Weekly_Sales,Holiday_Flag,Temperature,Date
+---------- Prepare Features End ----------
+
+-------> First Ten Rows of Input Data: 
+   Store  Weekly_Sales  Holiday_Flag  ...  Fuel_Price         CPI  Unemployment
+0      1    1643690.90             0  ...       2.572  211.096358         8.106
+1      1    1641957.44             1  ...       2.548  211.242170         8.106
+2      1    1611968.17             0  ...       2.514  211.289143         8.106
+3      1    1409727.59             0  ...       2.561  211.319643         8.106
+4      1    1554806.68             0  ...       2.625  211.350143         8.106
+5      1    1439541.59             0  ...       2.667  211.380643         8.106
+6      1    1472515.79             0  ...       2.720  211.215635         8.106
+7      1    1404429.92             0  ...       2.732  211.018042         8.106
+8      1    1594968.28             0  ...       2.719  210.820450         7.808
+9      1    1545418.53             0  ...       2.770  210.622857         7.808
+
+[10 rows x 8 columns]
+
+-------> Rows: 6435
+
+-------> Columns: 8
+-------> COMPUTING: Total dataLoadTime time(sec) :0.17440198399981455
+Applying Interpolation using linear
+-------> Input dataFrame(5 Rows) after preprocessing: 
+        Date  Store  Weekly_Sales  ...  Fuel_Price         CPI  Unemployment
+0 2010-05-02      1    1643690.90  ...       2.572  211.096358         8.106
+1 2010-12-02      1    1641957.44  ...       2.548  211.242170         8.106
+2 2010-02-19      1    1611968.17  ...       2.514  211.289143         8.106
+3 2010-02-26      1    1409727.59  ...       2.561  211.319643         8.106
+4 2010-05-03      1    1554806.68  ...       2.625  211.350143         8.106
+
+[5 rows x 8 columns]
+
+================== Data Profiler has started ==================
+Status:-|... AION feature transformation started
+-------> Input dataFrame(5 Rows): 
+        Date  Store  Weekly_Sales  ...  Fuel_Price         CPI  Unemployment
+0 2010-05-02      1    1643690.90  ...       2.572  211.096358         8.106
+1 2010-12-02      1    1641957.44  ...       2.548  211.242170         8.106
+2 2010-02-19      1    1611968.17  ...       2.514  211.289143         8.106
+3 2010-02-26      1    1409727.59  ...       2.561  211.319643         8.106
+4 2010-05-03      1    1554806.68  ...       2.625  211.350143         8.106
+
+[5 rows x 8 columns]
+-------> DataFrame Shape (Row,Columns): (6435, 8)
+Target feature not present
+Data frame:
+	        Date  Store  Weekly_Sales  ...  Fuel_Price         CPI  Unemployment
+	0 2010-05-02      1    1643690.90  ...       2.572  211.096358         8.106
+	1 2010-12-02      1    1641957.44  ...       2.548  211.242170         8.106
+	
+	[2 rows x 8 columns]
+	<class 'pandas.core.frame.DataFrame'>
+	RangeIndex: 6435 entries, 0 to 6434
+	Data columns (total 8 columns):
+	 #   Column        Non-Null Count  Dtype         
+	---  ------        --------------  -----         
+	 0   Date          6435 non-null   datetime64[ns]
+	 1   Store         6435 non-null   int64         
+	 2   Weekly_Sales  6435 non-null   float64       
+	 3   Holiday_Flag  6435 non-null   int64         
+	 4   Temperature   6435 non-null   float64       
+	 5   Fuel_Price    6435 non-null   float64       
+	 6   CPI           6435 non-null   float64       
+	 7   Unemployment  6435 non-null   float64       
+	dtypes: datetime64[ns](1), float64(5), int64(2)
+	memory usage: 402.3 KB
+	
+-----------  Inspecting Features -----------
+-----------  Type Conversion -----------
+-------> Store -> from int64 to float64 : Done
+-------> Holiday_Flag -> from int64 to float64 : Done
+Status:- |... Feature inspection done
+-------> Feature wise outlier detection:
+
+Status:- !... Fillna for numeric feature done
+-------> Running median on features: ['Fuel_Price', 'Weekly_Sales', 'CPI', 'Store', 'Holiday_Flag', 'Temperature', 'Unemployment']
+
+Status:- !... Normalization treatment done
+-------> Data Frame Post Data Profiling(5 Rows): 
+   Fuel_Price  Weekly_Sales         CPI  ...  Temperature  Unemployment       Date
+0       2.572    1643690.90  211.096358  ...        42.31         8.106 2010-05-02
+1       2.548    1641957.44  211.242170  ...        38.51         8.106 2010-12-02
+2       2.514    1611968.17  211.289143  ...        39.93         8.106 2010-02-19
+3       2.561    1409727.59  211.319643  ...        46.63         8.106 2010-02-26
+4       2.625    1554806.68  211.350143  ...        46.50         8.106 2010-05-03
+
+[5 rows x 8 columns]
+Status:-|... AION feature transformation completed
+-------> COMPUTING: Total Data Profiling Execution Time 4.148755788803101
+================== Data Profiling completed ==================
+
+================ Time Series Forecasting Started ====================
+Status:-|... AION TimeSeries Forecasting started
+<-------------- Time series stationarity and seasonality test Started...---------------->
+
+<------ Time Series stationary test started.....------------->
+
+<------ Feature used:------------->	Fuel_Price
+Adfuller test (time series stationary test) p_value: 	1.077635317026596e-26
+Status:- |... Fuel_Price is stationary
+<------ Time Series stationary test started.....------------->
+
+<------ Feature used:------------->	Weekly_Sales
+Adfuller test (time series stationary test) p_value: 	0.00011655869699901207
+Status:- |... Weekly_Sales is stationary
+<------ Time Series stationary test started.....------------->
+
+<------ Feature used:------------->	CPI
+Adfuller test (time series stationary test) p_value: 	3.1322557969043435e-05
+Status:- |... CPI is stationary
+<------ Time Series stationary test started.....------------->
+
+<------ Feature used:------------->	Store
+Adfuller test (time series stationary test) p_value: 	0.931705729046667
+Status:- |... Store is non stationary
+<------ Time Series stationary test started.....------------->
+
+<------ Feature used:------------->	Holiday_Flag
+Adfuller test (time series stationary test) p_value: 	0.0
+Status:- |... Holiday_Flag is stationary
+<------ Time Series stationary test started.....------------->
+
+<------ Feature used:------------->	Temperature
+Adfuller test (time series stationary test) p_value: 	4.4343143704587573e-08
+Status:- |... Temperature is stationary
+<------ Time Series stationary test started.....------------->
+
+<------ Feature used:------------->	Unemployment
+Adfuller test (time series stationary test) p_value: 	1.5256456400033752e-05
+Status:- |... Unemployment is stationary
+Status:- |... Data is non stationarity
+Time series Stationarity test completed.
+
+TS seasonality Test: The problem type is time series Multivariate.
+<------ Time Series Seasonality  test started.....------------->
+
+<------ Feature used:------------->
+Fuel_Price
+<------------------ Time series Seasonality test result:------------------>
+Status:- |... Fuel_Price have seasonality
+Seasonality information saved as dataframe at:	 /root/HCLT/data/target/AI0051/1/data/seasonality/timeseries_seasonality_check_Fuel_Price.csv
+<------ Time Series Seasonality  test started.....------------->
+
+<------ Feature used:------------->
+Weekly_Sales
+<------------------ Time series Seasonality test result:------------------>
+Status:- |... Weekly_Sales have seasonality
+Seasonality information saved as dataframe at:	 /root/HCLT/data/target/AI0051/1/data/seasonality/timeseries_seasonality_check_Weekly_Sales.csv
+<------ Time Series Seasonality  test started.....------------->
+
+<------ Feature used:------------->
+CPI
+<------------------ Time series Seasonality test result:------------------>
+Status:- |... CPI have seasonality
+Seasonality information saved as dataframe at:	 /root/HCLT/data/target/AI0051/1/data/seasonality/timeseries_seasonality_check_CPI.csv
+<------ Time Series Seasonality  test started.....------------->
+
+<------ Feature used:------------->
+Store
+<------------------ Time series Seasonality test result:------------------>
+Status:- |... Store have seasonality
+Seasonality information saved as dataframe at:	 /root/HCLT/data/target/AI0051/1/data/seasonality/timeseries_seasonality_check_Store.csv
+<------ Time Series Seasonality  test started.....------------->
+
+<------ Feature used:------------->
+Holiday_Flag
+<------------------ Time series Seasonality test result:------------------>
+Status:- |... Holiday_Flag have seasonality
+Seasonality information saved as dataframe at:	 /root/HCLT/data/target/AI0051/1/data/seasonality/timeseries_seasonality_check_Holiday_Flag.csv
+<------ Time Series Seasonality  test started.....------------->
+
+<------ Feature used:------------->
+Temperature
+<------------------ Time series Seasonality test result:------------------>
+Status:- |... Temperature have seasonality
+Seasonality information saved as dataframe at:	 /root/HCLT/data/target/AI0051/1/data/seasonality/timeseries_seasonality_check_Temperature.csv
+<------ Time Series Seasonality  test started.....------------->
+
+<------ Feature used:------------->
+Unemployment
+<------------------ Time series Seasonality test result:------------------>
+Status:- |... Unemployment have seasonality
+Seasonality information saved as dataframe at:	 /root/HCLT/data/target/AI0051/1/data/seasonality/timeseries_seasonality_check_Unemployment.csv
+Time series Seasonality test completed.
+
+<-------------- Time series stationarity and seasonality test completed.---------------->
+
+
+---------------Start  Stationary Checks-----------
+-------> Features: Fuel_Price
+----------> ADF Statistic: -14.336549359802435
+----------> p-value: 0.000000
+-------------> Converted As Stationary Data
+----------> Critical Values
+----------> 1%: -3.4313720159883494
+----------> 5%: -2.8619916423115734
+----------> 10%: -2.5670104060049495
+------------->{}
+----------> Equals to Stationary Data
+-------> Features: CPI
+----------> ADF Statistic: -4.923917220807878
+----------> p-value: 0.000031
+-------------> Converted As Stationary Data
+----------> Critical Values
+----------> 1%: -3.431366771972533
+----------> 5%: -2.861989325308324
+----------> 10%: -2.567009172612198
+------------->{}
+----------> Equals to Stationary Data
+-------> Features: Unemployment
+----------> ADF Statistic: -5.081704127403597
+----------> p-value: 0.000015
+-------------> Converted As Stationary Data
+----------> Critical Values
+----------> 1%: -3.43136740474287
+----------> 5%: -2.8619896048902542
+----------> 10%: -2.5670093214398872
+------------->{}
+----------> Equals to Stationary Data
+-------> Stationary data diff()
+{}
+---------------Start  Stationary Checks Ends-----------
+
+3
+
+--------------Start GrangersCausationMatrix---------------
+                Fuel_Price_x   CPI_x  Unemployment_x
+Fuel_Price_y          1.0000  0.0268          0.0000
+CPI_y                 0.1253  1.0000          0.7032
+Unemployment_y        0.0000  0.5560          1.0000
+--------------End GrangersCausationMatrix---------------
+
+
+-------------- Start of the Co Integration test ---------------
+------->coint_johansen trace statistics: [187.02465782  47.65045604  21.734842  ]
+------->coint_johansen critical values:
+[[27.0669 29.7961 35.4628]
+ [13.4294 15.4943 19.9349]
+ [ 2.7055  3.8415  6.6349]]
+------->There are 3 Co-Integration vectors
+-------------- End of the Co Integration test ---------------
+
+There are  statistically significant relationship in data 
+Status:- |... Statistically Check Done. Statistically significant relations
+ARIMA, FBProphet cannot apply, Input data contains more than one feature, only VAR algorithm can apply, applying VAR by AION 
+
+-------> Top 5 Rows: 
+   Fuel_Price         CPI  Unemployment       Date
+0       2.572  211.096358         8.106 2010-05-02
+1       2.548  211.242170         8.106 2010-12-02
+2       2.514  211.289143         8.106 2010-02-19
+3       2.561  211.319643         8.106 2010-02-26
+4       2.625  211.350143         8.106 2010-05-03
+------------- Start VAR Model -------------
+Status:- |... TimeSeries Algorithm applied: VAR
+
+-------------Selecting max lag order -----------
+------->lag_order: 1
+-------> Time: 0.004674673080444336
+
+
+--------------- Modal Validation Start ---------------
+------->Feature: Fuel_Price
+---------->MAE: 0.6881095034679248
+---------->MSE: 0.5951788251819539
+---------->RMSE :0.7714783374677178
+------------->MAPE :18.811676913244053
+------------->R2 :-3.437151058986813
+------->Feature: CPI
+---------->MAE: 4.482363107955351
+---------->MSE: 27.846785483796154
+---------->RMSE :5.277005351882463
+------------->MAPE :2.574080749024109
+------------->R2 :-2.566365283438252
+------->Feature: Unemployment
+---------->MAE: 0.6226950449691937
+---------->MSE: 0.5883134325324328
+---------->RMSE :0.7670159271699857
+------------->MAPE :8.256728216745529
+------------->R2 :-1.864516073262866
+--------------- Modal Validation End ---------------
+
+  Fuel_Price         CPI Unemployment
+0   2.827023  167.973279     8.485202
+1   2.819923   167.91885     8.499836
+2   2.812245  167.928805     8.502326
+3   2.809339  167.942639     8.502578
+4   2.809269  167.947723     8.502803
+['Fuel_Price', 'CPI', 'Unemployment']
+{}
+-------> Predictions on Test Data
+  Fuel_Price         CPI Unemployment
+0   2.827023  167.973279     8.485202
+1   2.819923   167.91885     8.499836
+2   2.812245  167.928805     8.502326
+3   2.809339  167.942639     8.502578
+------->AIC Score: -8.493984803299929
+Status:-  |... Score AIC: -8.49
+VAR Univariant User selected scoring parameter is MSE. MSE value: 0.5883134325324328
+Status:-  |... Score MSE(Avg): 0.59
+VAR, all scoring param results: "RMSE":"0.77","MSE":"0.59","R2":"-1.86","MAE":"0.62"
+------------- Start VAR Model End-------------
+
+Fuel_Price:0.0
+There is a positive correlation
+CPI:0.0
+There is a positive correlation
+Unemployment:0.0
+There is a positive correlation
+Best model to deploy: 
+VAR
+-------> Number of Forecast Records: 20
+
+------ Forecast Prediction Start -------------
+  Fuel_Price     CPI Unemployment
+0        3.9  176.75         7.06
+1        3.9  176.71         7.13
+2        3.9  176.61         7.18
+3       3.89  176.47         7.21
+4       3.89  176.32         7.25
+['Fuel_Price', 'CPI', 'Unemployment']
+{}
+-------> Predictions
+   Fuel_Price     CPI Unemployment
+0         3.9  176.75         7.06
+1         3.9  176.71         7.13
+2         3.9  176.61         7.18
+3        3.89  176.47         7.21
+4        3.89  176.32         7.25
+5        3.88  176.18         7.27
+6        3.86  176.04          7.3
+7        3.85   175.9         7.32
+8        3.84  175.77         7.34
+9        3.83  175.64         7.36
+10       3.82  175.53         7.38
+11        3.8  175.41          7.4
+12       3.79   175.3         7.42
+13       3.78   175.2         7.43
+14       3.77   175.1         7.45
+15       3.76  175.01         7.46
+16       3.75  174.92         7.48
+17       3.74  174.83         7.49
+18       3.73  174.75          7.5
+19       3.72  174.67         7.52
+Status:-|... AION TimeSeries Forecasting completed
+------ Forecast Prediction End -------------
+
+================ Time Series Forecasting Completed ================
+
+
+================== Visualization Recommendation Started ==================
+
+================== Data Profiling Details==================
+================== Data Profiling Details End ==================
+
+================== Features Correlation Details ==================
+
+
+================== Model Performance Analysis ==================
+================== Model Performance Analysis End ==================
+
+
+================== For Descriptive Analysis of Model Features ==================
+================== For Descriptive Analysis of Model Features End ==================
+
+-------> COMPUTING: Total Visualizer Execution Time 0.05784964561462402
+================== Visualization Recommendation Started ==================
+
+
+================== Deployment Started ==================
+Status:-|... AION Creating Prediction Service Start
+-------> Deploy Location :/root/HCLT/data/target/AI0051/1
+========> Inside Output Formatter
+op:modelType: 
+TimeSeriesForecasting
+-------> Output Mapping File Location :/root/HCLT/data/target/AI0051/1/script/output_format.py
+-------> Profiler File Location :/root/HCLT/data/target/AI0051/1/script/inputprofiler.py
+-------> Feature Selector File Location :/root/HCLT/data/target/AI0051/1/script/selector.py
+Create Forecast Function
+-------> Model File Location :/root/HCLT/data/target/AI0051/1/script/trained_model.py
+Status:- |... Model deployment files created
+-------> Readme File Location: /root/HCLT/data/target/AI0051/1/readme.txt
+Status:- |... Model deployment completed
+-------> COMPUTING: Total Deployer Execution Time 0.8701965808868408
+Status:-|... AION Creating Prediction Service completed
+================== Deployment Completed ==================
+
+------------- Summary ------------
+------->No of rows & columns in data:(6435,8)
+------->No of missing Features :0
+------->Missing Features:[]
+------->Text Features:[]
+------->No of Nonnumeric Features :0
+------->Non-Numeric Features :[]
+------->Threshold: NA
+------->Label Maps of Target Feature for classification  :{}
+------->Type of Model :TimeSeriesForecasting
+------->Best Model :VAR
+------------- Summary ------------
+
+Status:-|... AION Model Training Successfully Done
+
+Total execution time(sec) :12.988249646999975
+
+------------- Output JSON ------------
+aion_learner_status:{"status": "SUCCESS", "data": {"ModelType": "TimeSeriesForecasting", "deployLocation": "/root/HCLT/data/target/AI0051/1", "BestModel": "VAR", "BestScore": "0.59", "ScoreType": "MSE", "matrix": {"RMSE": "0.77", "MSE": "0.59", "R2": "-1.86", "MAE": "0.62"}, "featuresused": "['Fuel_Price', 'CPI', 'Unemployment']", "targetFeature": "", "EvaluatedModels": [{"Model": "VAR", "Score": 0.59, "Scoring Param": "MSE"}], "forecasts": [{"Fuel_Price": 3.9, "CPI": 176.75, "Unemployment": 7.06}, {"Fuel_Price": 3.9, "CPI": 176.71, "Unemployment": 7.13}, {"Fuel_Price": 3.9, "CPI": 176.61, "Unemployment": 7.18}, {"Fuel_Price": 3.89, "CPI": 176.47, "Unemployment": 7.21}, {"Fuel_Price": 3.89, "CPI": 176.32, "Unemployment": 7.25}, {"Fuel_Price": 3.88, "CPI": 176.18, "Unemployment": 7.27}, {"Fuel_Price": 3.86, "CPI": 176.04, "Unemployment": 7.3}, {"Fuel_Price": 3.85, "CPI": 175.9, "Unemployment": 7.32}, {"Fuel_Price": 3.84, "CPI": 175.77, "Unemployment": 7.34}, {"Fuel_Price": 3.83, "CPI": 175.64, "Unemployment": 7.36}, {"Fuel_Price": 3.82, "CPI": 175.53, "Unemployment": 7.38}, {"Fuel_Price": 3.8, "CPI": 175.41, "Unemployment": 7.4}, {"Fuel_Price": 3.79, "CPI": 175.3, "Unemployment": 7.42}, {"Fuel_Price": 3.78, "CPI": 175.2, "Unemployment": 7.43}, {"Fuel_Price": 3.77, "CPI": 175.1, "Unemployment": 7.45}, {"Fuel_Price": 3.76, "CPI": 175.01, "Unemployment": 7.46}, {"Fuel_Price": 3.75, "CPI": 174.92, "Unemployment": 7.48}, {"Fuel_Price": 3.74, "CPI": 174.83, "Unemployment": 7.49}, {"Fuel_Price": 3.73, "CPI": 174.75, "Unemployment": 7.5}, {"Fuel_Price": 3.72, "CPI": 174.67, "Unemployment": 7.52}], "LogFile": "/root/HCLT/data/target/AI0051/1/log/model_training_logs.log"}}
+------------- Output JSON ------------
+
