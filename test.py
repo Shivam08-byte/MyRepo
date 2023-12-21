@@ -1,3 +1,32 @@
+async def upload_data(browse, dataLocation, usecaseid):
+    file = browse.file
+    with open(dataLocation, "wb") as dataFile:
+        # if want to upload chunk
+        # while True:
+        #     chunk = await file.read(
+        #         1024
+        #     )  # Reading smaller chunks for better memory usage
+        #     if not chunk:
+        #         break
+        #     dataFile.write(chunk)
+        content = await file.read()
+        dataFile.write(content)
+    # await process_uploaded_data(dataLocation)
+    upload_status.upload_in_progress = False
+    upload_status.data_uploaded = True
+    # update api status
+    model = ApiMasterModel(
+        api_name="DATA_UPLOAD",
+        api_status="Success",
+        model_version=1,
+        uuid=browse.tracking_id,
+        api_result_location=dataLocation,
+        usecaseid=usecaseid,
+    )
+    setapistatus(model)
+
+
+
 import csv
 from enum import Enum
 import auth.login
