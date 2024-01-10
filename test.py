@@ -1,3 +1,10 @@
+curl -X 'POST' \
+  'http://localhost:1001/aion/v1/train/timeseries?tracking_id=1234567890' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'confFile=@AION_1704794833.json;type=application/json'
+
+
 async def upload_data(browse, dataLocation, usecaseid):
     file = browse.file
     with open(dataLocation, "wb") as dataFile:
