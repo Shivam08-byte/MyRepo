@@ -1,3 +1,21 @@
+async def handle_clustering_training(
+    tracking_id: int,
+    response: Response,
+    confFile: UploadFile = File(description="Upload config file for training"),
+):
+    try:
+        #print("we are in clustering endpoint handler")
+        clusteingmodel = ClusteringModel()
+        #print("clusteringmodel : ", vars(clusteingmodel))
+        pcaModel_pickle_file = ""
+        filename = getFileName()
+        #print("filename : ", filename)
+
+
+
+
+
+
 curl -X 'POST' \
   'http://localhost:1001/aion/v1/train/timeseries?tracking_id=1234567890' \
   -H 'accept: application/json' \
