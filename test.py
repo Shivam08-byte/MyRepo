@@ -1,3 +1,254 @@
+
+@clusteringApp.post("/aion/training/clustering")
+def handle_clustering(config_path: str):
+    pcaModel_pickle_file=""
+    try:
+        featureReduction = "True"
+        warnings.filterwarnings("ignore")
+        config_path = Path(config_path)
+        with open(config_path, "r") as f:
+            config = json.load(f)
+
+        config_obj = AionConfigManager()
+        codeConfigure = code_configure()
+        codeConfigure.create_config(config)
+        readConfistatus, msg = config_obj.readConfigurationFile(config)
+        if readConfistatus == False:
+            raise ValueError(msg)
+        log = set_log_handler(config["basic"])
+        config_obj.get_global_config_handler()
+        mlflowSetPath(
+            config_obj.deployLocation,
+            config_obj.iterName + "_" + config_obj.iterVersion,
+        )
+        status, error_id, msg = config_obj.validate_config()
+        config_obj.get_dataframe_handler()
+        set_log_handler(config_obj.basic, mode="a")
+        startTime = timeit.default_timer()
+        config_obj.updated_global_problem_type_config(codeConfigure, log)
+        # selector status
+        if config_obj.selector_status:
+            log.info(
+                "\n================== Feature Selector has started =================="
+            )
+            log.info("Status:-|... AION feature engineering started")
+            fs_mlstart = time.time()
+            selectorJson = config_obj.getEionSelectorConfiguration()
+            if config_obj.textFeatures:
+                config_obj.updateFeatureSelection(
+                    selectorJson, codeConfigure, config_obj.textFeatures
+                )
+                log.info(
+                    "-------> For vectorizer 'feature selection' is disabled and all the features will be used for training"
+                )
+            selectorObj = featureSelector()
+            (
+                dataFrame,
+                targetColumn,
+                config_obj.topFeatures,
+                config_obj.modelSelTopFeatures,
+                config_obj.allFeatures,
+                config_obj.targetType,
+                config_obj.similarGroups,
+                numericContinuousFeatures,
+                discreteFeatures,
+                nonNumericFeatures,
+                categoricalFeatures,
+                pcaModel,
+                bpca_features,
+                apca_features,
+                featureEngineeringSelector,
+            ) = selectorObj.startSelector(
+                config_obj.dataFrame,
+                selectorJson,
+                config_obj.textFeatures,
+                config_obj.targetFeature,
+                config_obj.problem_type,
+            )
+            if str(pcaModel) != "None":
+                featureReduction = "True"
+                status, msg = save_csv(
+                    config_obj.dataFrame, config_obj.reduction_data_file
+                )
+                if not status:
+                    log.info("CSV File Error: " + str(msg))
+                pcaFileName = os.path.join(
+                    config_obj.deployLocation,
+                    "model",
+                    "pca" + config_obj.iterName + "_" + config_obj.iterVersion + ".sav",
+                )
+                pcaModel_pickle_file = "pca" + config_obj.iterName + "_" + config_obj.iterVersion + ".sav"
+
+                pickle.dump(pcaModel, open(pcaFileName, "wb"))
+                if not config_obj.xtest.empty:
+                    config_obj.xtest = pd.DataFrame(
+                        pcaModel.transform(config_obj.xtest), columns=apca_features
+                    )
+            if config_obj.targetColumn in config_obj.topFeatures:
+                config_obj.topFeatures.remove(config_obj.targetColumn)
+            fs_mlexecutionTime = time.time() - fs_mlstart
+            log.info(
+                "-------> COMPUTING: Total Feature Selection Execution Time "
+                + str(fs_mlexecutionTime)
+            )
+            log.info(
+                "================== Feature Selection completed ==================\n"
+            )
+            log.info("Status:-|... AION feature engineering completed")
+        #  deeplearner status
+        if config_obj.deeplearner_status or config_obj.learner_status:
+            log.info("Status:-|... AION training started")
+            ldp_mlstart = time.time()
+            balancingMethod = config_obj.getAIONDataBalancingMethod()
+            mlobj = machinelearning()
+            modelType = config_obj.problem_type.lower()
+            config_obj.targetColumn = config_obj.targetFeature
+            if modelType == "na":
+                modelType = "clustering"
+            config_obj.datacolumns = list(config_obj.dataFrame.columns)
+            if config_obj.targetColumn in config_obj.datacolumns:
+                config_obj.datacolumns.remove(config_obj.targetColumn)
+            config_obj.features = config_obj.datacolumns
+            config_obj.featureData = config_obj.dataFrame[config_obj.features]
+            if (modelType == "clustering") or (modelType == "topicmodelling"):
+                config_obj.xtrain = config_obj.featureData
+                ytrain = pd.DataFrame()
+                config_obj.xtest = config_obj.featureData
+                ytest = pd.DataFrame()
+            elif config_obj.targetColumn != "":
+                config_obj.xtrain = config_obj.dataFrame[config_obj.features]
+                config_obj.ytest = config_obj.dataFrame[config_obj.targetColumn]
+            else:
+                pass
+            categoryCountList = []
+            ldp_mlexecutionTime = time.time() - ldp_mlstart
+            log.info(
+                "-------> COMPUTING: Total Learner data preparation Execution Time "
+                + str(ldp_mlexecutionTime)
+            )
+
+        # learner status
+        if config_obj.learner_status:
+            base_model_score = 0
+            log.info("\n================== ML Started ==================")
+            log.info(
+                "------->	Memory Usage by DataFrame During Learner Status	 "
+                + str(config_obj.dataFrame.memory_usage(deep=True).sum())
+            )
+            mlstart = time.time()
+            log.info("-------> Target Problem Type:" + config_obj.targetType)
+            learner_type = "ML"
+            learnerJson = config_obj.getEionLearnerConfiguration()
+            mlobj = machinelearning()
+
+            log.info("-------> Target Problem Type:" + config_obj.targetType)
+            log.info("-------> Target Model Type:" + modelType)
+
+            config_obj.scoreParam = config_obj.scoreParam.lower()
+            codeConfigure.update_config("scoring_criteria", config_obj.scoreParam)
+            modelParams, modelList = config_obj.getEionLearnerModelParams(modelType)
+            config_obj.saved_model = (
+                config_obj.iterName + "_" + config_obj.iterVersion + ".sav"
+            )
+            (
+                status,
+                model_type,
+                model,
+                config_obj.saved_model,
+                matrix,
+                trainmatrix,
+                featureDataShape,
+                model_tried,
+                score,
+                filename,
+                config_obj.features,
+                threshold,
+                pscore,
+                rscore,
+                config_obj.method,
+                loaded_model,
+                xtrain1,
+                ytrain1,
+                xtest1,
+                ytest1,
+                topics,
+                params,
+            ) = mlobj.startLearning(
+                learnerJson,
+                modelType,
+                modelParams,
+                modelList,
+                config_obj.scoreParam,
+                config_obj.targetColumn,
+                config_obj.dataFrame,
+                config_obj.xtrain,
+                config_obj.ytest,
+                config_obj.xtest,
+                config_obj.ytest,
+                categoryCountList,
+                config_obj.topFeatures,
+                config_obj.modelSelTopFeatures,
+                config_obj.allFeatures,
+                config_obj.targetType,
+                config_obj.deployLocation,
+                config_obj.iterName,
+                config_obj.iterVersion,
+                config_obj.trained_data_file,
+                config_obj.predicted_data_file,
+                config_obj.labelMaps,
+                "MB",
+                codeConfigure,
+                featureEngineeringSelector,
+                config_obj.getModelEvaluationConfig(),
+                config_obj.imageFolderLocation,
+            )
+
+            # Getting model,data for ensemble calculation
+            if config_obj.matrix != "{":
+                config_obj.matrix += ","
+            if config_obj.trainmatrix != "{":
+                config_obj.trainmatrix += ","
+            config_obj.trainmatrix += trainmatrix
+            config_obj.matrix += matrix
+            mlexecutionTime = time.time() - mlstart
+            log.info("-------> Total ML Execution Time " + str(mlexecutionTime))
+            log.info("================== ML Completed ==================\n")
+            return {
+                "status": status,
+                "model_type": "Clustering",
+                "model": model,
+                "saved_model": config_obj.saved_model,
+                "matrix": config_obj.matrix,
+                "trainmatrix": config_obj.trainmatrix,
+                "featureDataShape": featureDataShape,
+                "model_tried": model_tried,
+                "score": score,
+                "filename": filename,
+                "features": config_obj.features,
+                "threshold": threshold,
+                "pscore": pscore,
+                "rscore": rscore,
+                "method": config_obj.method,
+                "deployLocation": config_obj.deployLocation,
+                "pcaModel_pickle_file":pcaModel_pickle_file,
+                "apca_features":apca_features,
+                "xtrain":config_obj.xtrain,
+                "iterVersion":config_obj.iterVersion,
+                "iterName":config_obj.iterName,
+                "trained_data_file":config_obj.trained_data_file,
+                "labelMaps":config_obj.labelMaps,
+                "learner_type" : str(learner_type),
+                                        }
+    except Exception as e:
+        traceback.print_exc()
+
+
+
+
+
+
+
+
 async def handle_clustering_training(
     tracking_id: int,
     response: Response,
