@@ -125,7 +125,6 @@ def handle_clustering(config_path: str):
                 "-------> COMPUTING: Total Learner data preparation Execution Time "
                 + str(ldp_mlexecutionTime)
             )
-
         # learner status
         if config_obj.learner_status:
             base_model_score = 0
