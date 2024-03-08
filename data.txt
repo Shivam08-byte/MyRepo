@@ -1,2 +1,6 @@
 predictions: 
+
+
+
+
 {"status": "SUCCESS", "data": [{"V": "0.338156758", "H": "0.0", "S": "0.0", "M": "1.0", "": null, "prediction": 2}]} 
